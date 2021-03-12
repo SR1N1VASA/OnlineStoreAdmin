@@ -1,0 +1,12 @@
+package com.onlinestoreadmin.service;
+
+import java.util.List;
+import com.onlinestoreadmin.domain.Book;
+
+public interface BookService {
+	
+	Book save(Book book);
+	
+	List<Book> findAll();
+
+}
