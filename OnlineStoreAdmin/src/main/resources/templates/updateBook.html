@@ -8,13 +8,15 @@
 
 	<div class="container">
 		<div class="row">
-			<form class="form-horizontal" th:action="@{/book/add}" method="post"
+			<form class="form-horizontal" th:action="@{/book/updateBook}" method="post"
 				enctype="multipart/form-data">
 				<fieldset>
 					<legend class="center-block">
-						New Book Information<span style="font-size: small"> * is a
+						Update Book Information<span style="font-size: small"> * is a
 							required field</span>
 					</legend>
+					
+					<input hidden="hidden" name="id" th:value="${book.id}" />
 
 
 					<!-- title -->
@@ -156,7 +158,7 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> <input
-									th:value="${book.listPrice}" type="number" step="0.01" name="listPrice"
+									th:value="${book.listPrice}" type="number" name="listPrice" step="0.01"
 									class="form-control" id="listPrice" placeholder="List Price" />
 							</div>
 							<span class="help-block">List price of the book</span>
@@ -170,7 +172,7 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> <input
-									th:value="${book.ourPrice}" type="number" step="0.01" name="ourPrice"
+									th:value="${book.ourPrice}" type="number" name="ourPrice" step="0.01"
 									class="form-control" id="ourPrice" placeholder="Our Price" />
 							</div>
 							<span class="help-block">Our price of the book</span>
@@ -206,8 +208,8 @@
 						<label class="col-md-2 control-label" for="description">Description</label>
 						<div class="col-md-8">
 							<textarea name="description" rows="5" class="form-control"
-								id="description" th:value="${book.description}"
-								placeholder="Description"></textarea>
+								id="description" th:value="${book.description}" th:text="${book.description}"
+								placeholder="Description" />
 							<span class="help-block">Description of the book</span>
 						</div>
 					</div>
@@ -226,8 +228,8 @@
 					<div class="form-group">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<button type="submit" class="btn btn-success">Add Book</button>
-							<a class="btn btn-danger" th:href="@{/}">Cancel</a>
+							<button type="submit" class="btn btn-success">Update Book</button>
+							<a class="btn btn-danger" th:href="@{/book/bookInfo(id=${book.id})}">Cancel</a>
 						</div>
 					</div>
 				</fieldset>
